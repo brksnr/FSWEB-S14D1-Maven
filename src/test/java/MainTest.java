@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.lang.reflect.Field;
+import java.util.Locale;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(ResultAnalyzer.class)
 public class MainTest {
+
 
     private Circle circle;
     private Cylinder cylinder;
@@ -31,6 +33,7 @@ public class MainTest {
 
     @BeforeEach
     void setUp() {
+        Locale.setDefault(Locale.US);
         circle = new Circle(2);
         cylinder = new Cylinder(2,2);
         rectangle = new Rectangle(1,2);
@@ -59,6 +62,9 @@ public class MainTest {
     @Test
     public void testGetArea() throws NoSuchFieldException {
         assertTrue(String.format("%.2f", circle.getArea()).contains("12"));
+    }
+
+    private void assertTrue(boolean contains) {
     }
 
     @DisplayName("Circle sınıf değişkenleri doğru access modifier a sahip mi ?")
